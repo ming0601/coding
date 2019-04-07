@@ -12,11 +12,12 @@ class ExOneToTenTest {
 
     @DisplayName("Testing Ex1: RemoveDuplicatesFromSortedArray")
     @ParameterizedTest(name = "Case {index} : Remove duplicates according to {0} value(s) in the array")
-    @CsvSource("null,0", "2,2", "2_With_1_Null,1", "moreThan_2,5", "moreThan_2_WithNulls,4")
+    @CsvSource("null,0", "2,2", "arrayOfNulls,0", "2_With_1_Null,1", "moreThan_2,5", "moreThan_2_WithNulls,4")
     fun testEx1(case: String, expectedSize: Int){
         val input: Array<Int?>? = when (case) {
             "null" -> null
             "2" -> arrayOf(1,2)
+            "arrayOfNulls" -> arrayOf(null,null)
             "2_With_1_Null" -> arrayOf(1,null)
             "moreThan_2" -> arrayOf(1,2,3,4,5,1,2,3)
             "moreThan_2_WithNulls" -> arrayOf(1,null,3,4,null,1,2,3,null)
@@ -26,6 +27,7 @@ class ExOneToTenTest {
         val expectedResult = when (case) {
             "null" -> listOf()
             "2" -> listOf(1,2)
+            "arrayOfNulls" -> listOf()
             "2_With_1_Null" -> listOf(1)
             "moreThan_2" -> listOf(1,2,3,4,5)
             "moreThan_2_WithNulls" -> listOf(1,3,4,2)
